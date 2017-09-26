@@ -8,7 +8,8 @@ This program uses ```sys/ioctl.h``` to detect terminal window size.
 
 #### Usage
 
-Compile using ```gcc``` with the ```-o``` argument.
+Compile with ```collatz.h``` and ```collatz.c``` in the same directory.
+Use ```gcc``` with the ```-o``` argument.
 ```
 gcc collatz.c -o Collatz
 ```
