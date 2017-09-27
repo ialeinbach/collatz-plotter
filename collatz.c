@@ -6,8 +6,6 @@
 
 #include "collatz.h"
 
-#define Y_WIDTH 6
-
 // calculate Collatz sequence length for given seed value
 int collatz_iters(int seed) {
   int iters = 0;
