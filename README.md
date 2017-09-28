@@ -18,4 +18,4 @@ Run on command line with arguments specified as follows:
 ```
 ./Collatz <maxSeedVal>
 ```
-where ```Collatz``` will graph the Collatz sequence length of integers in the range ```[1, maxSeedVal]```.
+Then,  ```Collatz``` will graph the Collatz sequence length of integers in the range ```[1, maxSeedVal]```.
