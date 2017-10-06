@@ -1,0 +1,5 @@
+* Make min-heapify() iterative rather than recursive -- less of a stack hog
+
+* More features:
+  - Target specific points for added visual guidelines
+  - Track position of single integer through Collatz sequence
