@@ -62,37 +62,47 @@ void swap_heap(heap* hp, int i, int j) {
 // standard min_heapify over a c_pair's iters member, but if equal,
 // will sort by seed value in increasing order
 void min_heapify(heap* hp, int i) {
+  int prev_root = i;
   int root = i;
-  int left_child = 2 * i + 1;
-  int right_child = left_child + 1;
 
-  // check if left_child should appear above root given
-  // sorting method as stated at top of function
-  if(left_child < len_heap(hp)) {
-    if(acc_iters(hp, left_child) < acc_iters(hp, root)) {
-      root = left_child;
-    } else if(acc_iters(hp, left_child) == acc_iters(hp, root)
-              && acc_seed(hp, left_child) > acc_seed(hp, root)) {
-      root = left_child;
+  int left_child;
+  int right_child;
+
+  // break condition at bottom of loop
+  while(1) {
+    left_child = 2 * root + 1;
+    right_child = left_child + 1;
+
+    // check if left_child should appear above root given
+    // sorting method as stated at top of function
+    if(left_child < len_heap(hp)) {
+      if(acc_iters(hp, left_child) < acc_iters(hp, root)) {
+        root = left_child;
+      } else if(acc_iters(hp, left_child) == acc_iters(hp, root)
+                && acc_seed(hp, left_child) > acc_seed(hp, root)) {
+        root = left_child;
+      }
     }
-  }
 
-  // check if right_child should appear above root given
-  // sorting method as stated at top of function
-  if(right_child < len_heap(hp)) {
-    if(acc_iters(hp, right_child) < acc_iters(hp, root)) {
-      root = right_child;
-    } else if(acc_iters(hp, right_child) == acc_iters(hp, root)
-              && acc_seed(hp, right_child) > acc_seed(hp, root)) {
-      root = right_child;
+    // check if right_child should appear above root given
+    // sorting method as stated at top of function
+    if(right_child < len_heap(hp)) {
+      if(acc_iters(hp, right_child) < acc_iters(hp, root)) {
+        root = right_child;
+      } else if(acc_iters(hp, right_child) == acc_iters(hp, root)
+                && acc_seed(hp, right_child) > acc_seed(hp, root)) {
+        root = right_child;
+      }
     }
-  }
 
-  // if either child should appear above, swap root with
-  // greatest and continue
-  if(root != i) {
-    swap_heap(hp, root, i);
-    min_heapify(hp, root);
+    // if either child should appear above, swap root with
+    // greatest and continue
+    if(root != prev_root) {
+      swap_heap(hp, root, prev_root);
+      prev_root = root;
+    } else {
+      break;
+    }
   }
 }
 
